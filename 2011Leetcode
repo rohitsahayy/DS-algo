@@ -24,3 +24,24 @@ class Solution {
     return z;
 }
 }
+
+
+But following will run 
+class Solution {
+    public int finalValueAfterOperations(String[] operations) {
+        String a="++X";
+        String b="X++";
+        int res=0;
+        for(String o:operations){
+            if(o.equals(a) || o.equals(b)){
+                res=res+1;
+            }
+            
+            else{
+                res=res-1;
+            }
+        }
+        
+        return res;
+    }
+}
