@@ -1,0 +1,19 @@
+//1108 Defanging an IP Address Leetcode Solution
+
+class Solution {
+    public String defangIPaddr(String address) {
+        String nums="";
+        // int c;
+        for(int i=0;i<address.length();i++){
+            // char ch=address.charAt(i);
+            if(address.charAt(i)=='.'){
+                nums=nums+"[.]";
+        }
+            else{
+                nums= nums+address.charAt(i);
+            }
+    }
+        
+        return nums;
+}
+}
