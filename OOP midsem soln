@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.util.*;
+
+class Product{
+	Short id;
+	String review;
+	String shipment_date;
+	float rating;
+
+
+Product(Short id,String rev,String date,float rating){
+	this.id 		=	id;
+	review			=	rev;
+	shipment_date 	= 	date;
+	this.rating 	= 	rating;
+}
+
+void display(){
+	System.out.println("Review:"+review);
+	System.out.println("Shipment Date:"+shipment_date);
+	System.out.println("Rating:"+rating);
+}
+int priority(){
+	String bad = "bad"; 
+	String good = "good"; 
+	String sats = "satisfactory";
+	if(this.review.toLowerCase().contains(bad)){
+		return 1;
+	} 
+	if(this.review.toLowerCase().contains(sats)){
+		return 2;
+	} 
+	if(this.review.toLowerCase().contains(good)){
+		return 3;
+	} 
+	return 4;
+}
+}
+
+class productMain{
+	public static void main (String[] args){
+		Scanner sc=new Scanner(System.in);
+		
+		// System.out.println("Enter number of enteries :")
+		// int n=sc.nextInt();
+
+		Product obj[] = new Product[5];
+
+		for(int i = 0;i < 5;i++){
+			System.out.println("Enter id , Review , Shipment Date , Rating of object "+(i+1));
+			obj[i] = new Product(sc.nextShort(),sc.next(),sc.next(),sc.nextFloat());
+		}
+		Product temp  = new Product((short)0,"","",(float)0.0);
+		for(int i = 0;i < 5-1;i++){
+			if(obj[i].priority()>obj[i+1].priority()){
+				 temp=obj[i];
+				obj[i] = obj[i+1];
+				obj[i+1] = temp;
+			}
+		}
+		
+		for(int i = 0;i < 5;i++){
+			obj[i].display();
+		}
+		
+	}
+}
